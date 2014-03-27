@@ -41,10 +41,14 @@ getMZdetails <- function(file, turno){
   if(turno == 2){
     table <- table[-nrow(table), ]  
   }
-  colnames(table) <- c("DATA_GERACAO","HORA_GERACAO","COD_ELEICAO","DESC_ELEICAO","DATA_ELEICAO","NUM_ANO","NUM_TURNO","SIGLA_UF",
-                       "COD_MUNICIPIO","NOME_MUNICIPIO","NUM_ZONA","COD_CARGO","DESCRICAO_CARGO","QTD_APTOS","QTD_APTOS_TOT",
-                       "QTD_SECOES","QTD_SECOES_AGREGADAS","QTD_SECOES_TOT","QTD_COMPAREC","QTD_ABSTENCOES","QTD_VOTOS_NOMINAIS",
-                        "QTD_VOTOS_BRANCOS","QTD_VOTOS_NULOS","QTD_VOTOS_LEGENDA","QTD_VOTOS_VALIDOS","QTD_VOTOS_ANULADOS","QTD_IMPUGNACOES",
+  colnames(table) <- c("DATA_GERACAO","HORA_GERACAO","COD_ELEICAO","DESC_ELEICAO",
+                       "DATA_ELEICAO","NUM_ANO","NUM_TURNO","SIGLA_UF",
+                       "COD_MUNICIPIO","NOME_MUNICIPIO","NUM_ZONA","COD_CARGO",
+                      "DESCRICAO_CARGO","QTD_APTOS","QTD_APTOS_TOT",
+                       "QTD_SECOES","QTD_SECOES_AGREGADAS","QTD_SECOES_TOT","QTD_COMPAREC",
+                       "QTD_ABSTENCOES","QTD_VOTOS_NOMINAIS",
+                        "QTD_VOTOS_BRANCOS","QTD_VOTOS_NULOS","QTD_VOTOS_LEGENDA","QTD_VOTOS_VALIDOS",
+                        "QTD_VOTOS_ANULADOS","QTD_IMPUGNACOES",
                         "QTD_RECURSOS","DATA_ULT_TOTALIZACAO","HORA_ULTIMA_TOTALIZACAO")
     table <- table[, c("SIGLA_UF", "COD_MUNICIPIO",  "NOME_MUNICIPIO","NUM_ZONA", "DESCRICAO_CARGO", "QTD_APTOS_TOT", "QTD_COMPAREC")]    
 }
@@ -54,11 +58,14 @@ getVMZcandidato <- function(file, turno){
   if(turno == 2){
     table <- table[-nrow(table), ]  
   }
-  colnames(table) <- c("DATA_GERACAO","HORA_GERACAO","COD_ELEICAO","DESC_ELEICAO","DATA_ELEICAO","NUM_ANO","NUM_TURNO","SIGLA_UF",
-                       "COD_MUNICIPIO","NOME_MUNICIPIO","NUM_ZONA","COD_CARGO","DESCRICAO_CARGO", "NUM_PARTIDO", "NOME_URNA","NOME_CANDIDATO",
-                       "COD_SITUACAO_CAND","DESC_SITUACAO_CAND","COD_SITUACAO_CAND_SUP","DESC_SITUACAO_CAND_SUP","COD_SITUACAO_TOT",
-                       "DESC_SITUACAO_TOT","COD_FAIXA_ETARIA","DESC_FAIXA_ETARIA","COD_SEXO","DESC_SEXO","NUM_PARTIDO","SIGLA_PARTIDO",
-                       "NOME_LEGENDA","COMPOSICAO_LEGENDA","COD_TIPO_VOTAVEL","DESC_TIPO_VOTAVEL","DATA_ULT_TOTALIZACAO","HORA_ULT_TOTALIZACAO", "NUM_VOTOS")
+  colnames(table) <- c("DATA_GERACAO","HORA_GERACAO","COD_ELEICAO","DESC_ELEICAO","DATA_ELEICAO",
+                        "NUM_ANO","NUM_TURNO","SIGLA_UF",
+                       "COD_MUNICIPIO","NOME_MUNICIPIO","NUM_ZONA","COD_CARGO","DESCRICAO_CARGO", 
+                       "NUM_PARTIDO", "NOME_URNA","NOME_CANDIDATO",
+                       "COD_SITUACAO_CAND","DESC_SITUACAO_CAND","COD_SITUACAO_CAND_SUP","DESC_SITUACAO_CAND_SUP",
+                       "COD_SITUACAO_TOT", "DESC_SITUACAO_TOT","COD_FAIXA_ETARIA","DESC_FAIXA_ETARIA",
+                       "COD_SEXO","DESC_SEXO","NUM_PARTIDO","SIGLA_PARTIDO", "NOME_LEGENDA","COMPOSICAO_LEGENDA",
+                       "COD_TIPO_VOTAVEL","DESC_TIPO_VOTAVEL","DATA_ULT_TOTALIZACAO","HORA_ULT_TOTALIZACAO", "NUM_VOTOS")
   table <- table[, c("SIGLA_UF", "COD_MUNICIPIO",  "NOME_MUNICIPIO", "NUM_ZONA", "DESCRICAO_CARGO", "DESC_SITUACAO_TOT", "NUM_VOTOS", "NOME_CANDIDATO")]  
 }
 
@@ -118,7 +125,8 @@ for(cargo in cargos){
                                 "#FCFF00", "#FF9400", "#FF3100"))(256)
       table$col <- cols[table$dens]
       axis_lim = c(0,100)
-      plot(y~x, data=table[order(table$dens),], pch=20, col=col, cex=2, xlim = axis_lim, ylim = axis_lim, main = uf_name, 
+      plot(y~x, data=table[order(table$dens),], pch=20, col=col, cex=2, 
+           xlim = axis_lim, ylim = axis_lim, main = uf_name, 
            xlab = "Porcentagem de comparecimento", ylab = "Porcentagem de votos ao vitorioso")
   }
   dev.off()  
@@ -139,5 +147,6 @@ cols <-  colorRampPalette(c("#000099", "#00FEFF", "#45FE4F",
                             "#FCFF00", "#FF9400", "#FF3100"))(256)
 table$col <- cols[table$dens]
 axis_lim = c(0,100)
-plot(y~x, data=table[order(table$dens),], pch=20, col=col, cex=2, xlim = axis_lim, ylim = axis_lim, main = "Presidente -- Brasil", 
+plot(y~x, data=table[order(table$dens),], pch=20, col=col, cex=2, 
+    xlim = axis_lim, ylim = axis_lim, main = "Presidente -- Brasil", 
      xlab = "Porcentagem de comparecimento", ylab = "Porcentagem de votos ao vitorioso")
