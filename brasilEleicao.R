@@ -85,10 +85,8 @@ cargoPerUF <- list()
 cargos <- c("GOVERNADOR", "SENADOR")
 
 
-cte <- list() 
 for(cargo in cargos){
   
-    cte[[cargo]] = 0
     png(paste0(cargo, ".png"), height = 4050, width = 900, res = 120)
     
     par(mfrow=c(9,2))      
@@ -100,17 +98,13 @@ for(cargo in cargos){
       uf <- eleicaoPerUF[[uf_name]]  
       
       uf_cargo <- uf[uf$DESCRICAO_CARGO == cargo,]
-      if(nrow(uf_cargo) == 0) next
-      
+
       politicos <- unique(uf_cargo$NOME_CANDIDATO)
       vencedor <- names(sort(sapply(politicos, function(x) sum(subset(uf_cargo, subset = NOME_CANDIDATO == x, select = NUM_VOTOS))), decreasing = TRUE))[1]
       
       table <- uf_cargo[uf_cargo$NOME_CANDIDATO == vencedor,]
       if(nrow(uf_cargo) < 500) next
         
-      cte[[cargo]] = cte[[cargo]] + 1
-      
-      
           
     
       table$x <- as.numeric(table$QTD_COMPAREC)/as.numeric(table$QTD_APTOS_TOT) * 100
