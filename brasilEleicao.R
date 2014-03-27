@@ -50,7 +50,8 @@ getMZdetails <- function(file, turno){
                         "QTD_VOTOS_BRANCOS","QTD_VOTOS_NULOS","QTD_VOTOS_LEGENDA","QTD_VOTOS_VALIDOS",
                         "QTD_VOTOS_ANULADOS","QTD_IMPUGNACOES",
                         "QTD_RECURSOS","DATA_ULT_TOTALIZACAO","HORA_ULTIMA_TOTALIZACAO")
-    table <- table[, c("SIGLA_UF", "COD_MUNICIPIO",  "NOME_MUNICIPIO","NUM_ZONA", "DESCRICAO_CARGO", "QTD_APTOS_TOT", "QTD_COMPAREC")]    
+    table <- table[, c("SIGLA_UF", "COD_MUNICIPIO",  "NOME_MUNICIPIO","NUM_ZONA", "DESCRICAO_CARGO", 
+                      "QTD_APTOS_TOT", "QTD_COMPAREC")]    
 }
 
 getVMZcandidato <- function(file, turno){
@@ -66,7 +67,8 @@ getVMZcandidato <- function(file, turno){
                        "COD_SITUACAO_TOT", "DESC_SITUACAO_TOT","COD_FAIXA_ETARIA","DESC_FAIXA_ETARIA",
                        "COD_SEXO","DESC_SEXO","NUM_PARTIDO","SIGLA_PARTIDO", "NOME_LEGENDA","COMPOSICAO_LEGENDA",
                        "COD_TIPO_VOTAVEL","DESC_TIPO_VOTAVEL","DATA_ULT_TOTALIZACAO","HORA_ULT_TOTALIZACAO", "NUM_VOTOS")
-  table <- table[, c("SIGLA_UF", "COD_MUNICIPIO",  "NOME_MUNICIPIO", "NUM_ZONA", "DESCRICAO_CARGO", "DESC_SITUACAO_TOT", "NUM_VOTOS", "NOME_CANDIDATO")]  
+  table <- table[, c("SIGLA_UF", "COD_MUNICIPIO",  "NOME_MUNICIPIO", "NUM_ZONA", "DESCRICAO_CARGO", 
+                    "DESC_SITUACAO_TOT", "NUM_VOTOS", "NOME_CANDIDATO")]  
 }
 
 
