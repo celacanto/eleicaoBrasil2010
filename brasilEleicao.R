@@ -1,5 +1,4 @@
 library(XML)
-library(hexbin)
 
 getLinks <- function(turno, tipos){
   
